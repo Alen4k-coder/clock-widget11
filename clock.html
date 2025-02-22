@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Current Time Widget</title>
+  <style>
+    body {
+      margin: 0; 
+      padding: 0;
+      font-family: sans-serif;
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      height: 100vh; 
+      background: #f0f0f0;
+    }
+    .clock {
+      font-size: 48px;
+      font-weight: bold;
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="clock" id="clock">--:--:--</div>
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      // Получаем часы, минуты, секунды
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      
+      // Записываем в HTML
+      document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    // Обновляем раз в секунду
+    setInterval(updateTime, 1000);
+    // Первый вызов сразу при загрузке
+    updateTime();
+  </script>
+</body>
+</html>
